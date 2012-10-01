@@ -64,7 +64,7 @@
 		1719A20813D674C6004919FD /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calculator.m; path = CalculatorLib/Calculator.m; sourceTree = "<group>"; };
 		1719A23913D6763E004919FD /* libCalculator-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCalculator-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1719A23D13D6763E004919FD /* Calculator-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calculator-iOS-Prefix.pch"; sourceTree = "<group>"; };
-		1719A24613D6763F004919FD /* Calculator-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Calculator-iOSTests.octest"; path = "Calculator-iOS_LogicTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1719A24613D6763F004919FD /* Calculator-iOS_LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator-iOS_LogicTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1719A25013D6763F004919FD /* Calculator-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Calculator-iOSTests-Info.plist"; sourceTree = "<group>"; };
 		1719A25213D6763F004919FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		174B41A013D8A46C00DE83B2 /* CalculatorLogicTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorLogicTests.m; path = ../CalculatorLib/CalculatorLogicTests.m; sourceTree = "<group>"; };
@@ -75,11 +75,11 @@
 		17AA83B60F997E7D00167681 /* iOS_CalcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iOS_CalcViewController.h; path = iOS_Calc/iOS_CalcViewController.h; sourceTree = "<group>"; };
 		17AA83B70F997E7D00167681 /* iOS_CalcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iOS_CalcViewController.m; path = iOS_Calc/iOS_CalcViewController.m; sourceTree = "<group>"; };
 		17B1AFC613CEBBE20037B1C8 /* iOS_Calc-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "iOS_Calc-Info.plist"; path = "iOS_Calc/iOS_Calc-Info.plist"; sourceTree = "<group>"; };
-		17B57AB713D901CE0096B889 /* iOS_CalcTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = iOS_CalcTests.octest; path = iOS_Calc_ApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B57AB713D901CE0096B889 /* iOS_Calc_ApplicationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOS_Calc_ApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B57ABE13D901CE0096B889 /* iOS_CalcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS_CalcTests-Info.plist"; sourceTree = "<group>"; };
 		17B57AC013D901CE0096B889 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		17B57AC613D901CE0096B889 /* iOS_CalcTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS_CalcTests-Prefix.pch"; sourceTree = "<group>"; };
-		17B57ACA13D903090096B889 /* iOS_CalcApplicationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = iOS_CalcApplicationTests.h; sourceTree = "<group>"; };
+		17B57ACA13D903090096B889 /* iOS_CalcApplicationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOS_CalcApplicationTests.h; sourceTree = "<group>"; };
 		17B57ACB13D903090096B889 /* iOS_CalcApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOS_CalcApplicationTests.m; sourceTree = "<group>"; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -256,8 +256,8 @@
 			children = (
 				EB04C5E0125BD27400D4F4F6 /* Calc.app */,
 				1719A23913D6763E004919FD /* libCalculator-iOS.a */,
-				1719A24613D6763F004919FD /* Calculator-iOSTests.octest */,
-				17B57AB713D901CE0096B889 /* iOS_CalcTests.octest */,
+				1719A24613D6763F004919FD /* Calculator-iOS_LogicTests.octest */,
+				17B57AB713D901CE0096B889 /* iOS_Calc_ApplicationTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 			);
 			name = "Calculator-iOS_LogicTests";
 			productName = "Calculator-iOSTests";
-			productReference = 1719A24613D6763F004919FD /* Calculator-iOSTests.octest */;
+			productReference = 1719A24613D6763F004919FD /* Calculator-iOS_LogicTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		17B57AB613D901CE0096B889 /* iOS_Calc_ApplicationTests */ = {
@@ -353,7 +353,7 @@
 			);
 			name = iOS_Calc_ApplicationTests;
 			productName = iOS_CalcTests;
-			productReference = 17B57AB713D901CE0096B889 /* iOS_CalcTests.octest */;
+			productReference = 17B57AB713D901CE0096B889 /* iOS_Calc_ApplicationTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		1D6058900D05DD3D006BFB54 /* iOS_Calc */ = {
@@ -544,6 +544,8 @@
 				DSTROOT = /tmp/Calculator_iOS.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator-iOS/Calculator-iOS-Prefix.pch";
@@ -587,6 +589,8 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator-iOS/Calculator-iOS-Prefix.pch";
@@ -612,6 +616,8 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator-iOS/Calculator-iOS-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -634,6 +640,8 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS_CalcTests/iOS_CalcTests-Prefix.pch";
@@ -661,6 +669,8 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS_CalcTests/iOS_CalcTests-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -678,6 +688,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iOS_Calc/iOS_Calc_Prefix.pch;
