@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'iOS_CalcTests' target in the 'iOS_CalcTests' project
+//
+
+#ifdef __OBJC__
+   #import <UIKit/UIKit.h>
+   #import <Foundation/Foundation.h>
+#endif

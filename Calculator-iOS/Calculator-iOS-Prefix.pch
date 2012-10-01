@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Calculator-iOS' target in the 'Calculator-iOS' project
+//
+
+#ifdef __OBJC__
+   #import <Foundation/Foundation.h>
+#endif
