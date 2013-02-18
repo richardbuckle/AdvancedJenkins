@@ -54,6 +54,13 @@
 			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
 			remoteInfo = iOS_Calc;
 		};
+		C8C9DC5816D2CD63005B8A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1719A23813D6763E004919FD;
+			remoteInfo = "Calculator-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -367,6 +374,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C8C9DC5916D2CD63005B8A75 /* PBXTargetDependency */,
 			);
 			name = iOS_Calc;
 			productName = Calc;
@@ -515,6 +523,11 @@
 			isa = PBXTargetDependency;
 			target = 1D6058900D05DD3D006BFB54 /* iOS_Calc */;
 			targetProxy = 17B57ACF13D9046E0096B889 /* PBXContainerItemProxy */;
+		};
+		C8C9DC5916D2CD63005B8A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1719A23813D6763E004919FD /* Calculator-iOS */;
+			targetProxy = C8C9DC5816D2CD63005B8A75 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
