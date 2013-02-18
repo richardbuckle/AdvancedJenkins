@@ -463,7 +463,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "# Run the unit tests in this test bundle.\n\"${DEVELOPER_TOOLS_DIR}/RunUnitTests\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -653,6 +654,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				INFOPLIST_FILE = "iOS_CalcTests/iOS_CalcTests-Info.plist";
+				OTHER_TEST_FLAGS = "-RegisterForSystemEvents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -676,6 +678,7 @@
 				GCC_PREFIX_HEADER = "iOS_CalcTests/iOS_CalcTests-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				INFOPLIST_FILE = "iOS_CalcTests/iOS_CalcTests-Info.plist";
+				OTHER_TEST_FLAGS = "-RegisterForSystemEvents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				VALIDATE_PRODUCT = YES;
