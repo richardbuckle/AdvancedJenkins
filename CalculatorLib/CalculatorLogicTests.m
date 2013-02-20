@@ -63,7 +63,7 @@
  */
 - (void) setUp {
    NSLog(@"%@ setUp", self.name);
-   calculator = [[[Calculator alloc] init] retain];
+   calculator = [[Calculator alloc] init];
    STAssertNotNil(calculator, @"Cannot create Calculator instance");
 }
 
