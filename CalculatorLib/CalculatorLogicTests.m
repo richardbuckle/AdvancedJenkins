@@ -79,6 +79,11 @@
     STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"No input should produce 0. Instead got [%@]", [calculator displayValue]);
 }
 
+- (void)testDeleteNonexistentChar {
+    [calculator input:@"D"];
+    STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"Initial delete of nonexistent char should produce 0. Instead got [%@]", [calculator displayValue]);
+}
+
 - (void)testInputAndDeleteOneChar {
     [calculator input:@"6"];
     [calculator input:@"D"];
