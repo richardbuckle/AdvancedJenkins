@@ -97,6 +97,13 @@
     STAssertTrue([[calculator displayValue] isEqualToString:@"6"], @"Input 67 then delete should produce 6. Instead got [%@]", [calculator displayValue]);
 }
 
+- (void)testDecimalInput {
+    [calculator input:@"6"];
+    [calculator input:@"."];
+    [calculator input:@"7"];
+    STAssertTrue([[calculator displayValue] isEqualToString:@"6.7"], @"Input 6.7 then delete should produce 6.7. Instead got [%@]", [calculator displayValue]);
+}
+
 /* testAddition performs a simple addition test: 6 + 2 = 8.
  * The test has two parts:
  * 1. Through the input: method, feed the calculator the characters 6, +, 2, and =.
