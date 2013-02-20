@@ -20,6 +20,20 @@
                ReferencedContainer = "container:iPhoneUnitTests.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1719A24513D6763F004919FD"
+               BuildableName = "Calculator-iOS_LogicTests.octest"
+               BlueprintName = "Calculator-iOS_LogicTests"
+               ReferencedContainer = "container:iPhoneUnitTests.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -39,6 +53,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1719A23813D6763E004919FD"
+            BuildableName = "libCalculator-iOS.a"
+            BlueprintName = "Calculator-iOS"
+            ReferencedContainer = "container:iPhoneUnitTests.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
