@@ -75,6 +75,10 @@
    NSLog(@"%@ tearDown", self.name);
 }
 
+- (void)testNoInput {
+    STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"No input should produce 0. Instead got [%@]", [calculator displayValue]);
+}
+
 /* testAddition performs a simple addition test: 6 + 2 = 8.
  * The test has two parts:
  * 1. Through the input: method, feed the calculator the characters 6, +, 2, and =.
