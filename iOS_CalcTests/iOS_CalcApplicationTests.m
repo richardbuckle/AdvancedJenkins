@@ -24,13 +24,24 @@
 /* The setUp method is called automatically for each test-case method (methods whose name starts with 'test').
  */
 - (void) setUp {
-   app_delegate         = [[UIApplication sharedApplication] delegate];
+   app_delegate         = [[[UIApplication sharedApplication] delegate] retain];
    calc_view_controller = app_delegate.calcViewController;
    calc_view            = calc_view_controller.view;
 }
 
+- (void) tearDown {
+}
+
+
 - (void) testAppDelegate {
    STAssertNotNil(app_delegate, @"Cannot find the application delegate");
+}
+
+- (void) testIsPortraitOnly {
+    STAssertTrue([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait], @"Supports portrait");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], @"Doesn't support landscape left");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight], @"Doesn't support landscape right");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown], @"Doesn't support portrait upside down");
 }
 
 /* testAddition performs a chained addition test.
