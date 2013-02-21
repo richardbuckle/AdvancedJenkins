@@ -267,11 +267,11 @@
  * 3. The argument is nil.
  */
 - (void) testInputException {
-   NSLog(@"%@ start", self.name);
-	STAssertThrows([calculator input:@"67"], @"No exception for multicharacter input.");
-	STAssertThrows([calculator input:@"j"],  @"No exception for invalid input.");
-	STAssertThrows([calculator input:nil],   @"No exception for nil input.");
-   NSLog(@"%@ end", self.name);
+    NSLog(@"%@ start", self.name);
+    STAssertThrows([calculator input:@"67"], @"No exception for multicharacter input.");
+    STAssertThrows([calculator input:@"j"],  @"No exception for invalid input.");
+    STAssertThrows([calculator input:nil],   @"No exception for nil input.");
+    NSLog(@"%@ end", self.name);
 }
 
 @end
