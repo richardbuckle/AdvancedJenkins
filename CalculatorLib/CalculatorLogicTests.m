@@ -261,11 +261,15 @@
     STAssertTrue([[calculator displayValue] isEqualToString:@"5"], @"'5==' should be 5, got %@", [calculator displayValue]);
 }
 
+- (void) testInputExceptionMultiChar {
+    STAssertThrows([calculator input:@"67"], @"No exception for multicharacter input.");
+}
+
 /* testInputException ensures that the input: method throws an exception in three situations:
  * 1. The argument contains more than one character.
  * 2. The argument contains an invalid character.
  * 3. The argument is nil.
- */
+ *//*
 - (void) testInputException {
     NSLog(@"%@ start", self.name);
     STAssertThrows([calculator input:@"67"], @"No exception for multicharacter input.");
@@ -273,5 +277,5 @@
     STAssertThrows([calculator input:nil],   @"No exception for nil input.");
     NSLog(@"%@ end", self.name);
 }
-
+*/
 @end
