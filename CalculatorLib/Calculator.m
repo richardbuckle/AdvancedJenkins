@@ -169,11 +169,12 @@ const NSString *Clear     = @"C";
       }
    }
    if (bad_character) {
-      // Raise exception for unexpected character.
-      NSException *exception = [NSException exceptionWithName:NSInvalidArgumentException
-                                                       reason:@"The input_character parameter contains an unexpected value."
-                                                     userInfo:[NSDictionary dictionaryWithObjectsAndKeys: input_character, @"arg0", nil]];
-      [exception raise];
+        // Raise exception for unexpected character.
+        NSDictionary *errorDict = [NSDictionary dictionaryWithObjectsAndKeys: input_character, @"arg0", nil];
+        NSException *exception = [NSException exceptionWithName:NSInvalidArgumentException
+                                                         reason:@"The input_character parameter contains an unexpected value."
+                                                       userInfo:errorDict];
+        [exception raise];
    }
 }
 
