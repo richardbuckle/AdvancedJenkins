@@ -241,6 +241,15 @@
     STAssertTrue([[calculator displayValue] isEqualToString:@"25"], @"'2+3*5' should be 25, got %@", [calculator displayValue]);
 }
 
+- (void) testOperatorChange {
+    [calculator input:@"C"];
+    [calculator input:@"5"];
+    [calculator input:@"+"];
+    [calculator input:@"-"];
+    [calculator input:@"3"];
+    [calculator input:@"="];
+    STAssertTrue([[calculator displayValue] isEqualToString:@"2"], @"'5+-2' should be 2, got %@", [calculator displayValue]);
+}
 
 /* testInputException ensures that the input: method throws an exception in three situations:
  * 1. The argument contains more than one character.
