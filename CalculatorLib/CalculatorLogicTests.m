@@ -248,7 +248,7 @@
     [calculator input:@"-"];
     [calculator input:@"3"];
     [calculator input:@"="];
-    STAssertTrue([[calculator displayValue] isEqualToString:@"2"], @"'5+-2' should be 2, got %@", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"2"], @"'5+-3' should be 2, got %@", [calculator displayValue]);
 }
 
 /* testInputException ensures that the input: method throws an exception in three situations:
