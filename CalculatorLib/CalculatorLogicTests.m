@@ -218,16 +218,27 @@
    NSLog(@"%@ end", self.name);
 }
 
-- (void) testChainedComputation {
+- (void) testExplicitChainedComputation {
     [calculator input:@"C"];
     [calculator input:@"2"];
-    [calculator input:@"*"];
+    [calculator input:@"+"];
     [calculator input:@"3"];
     [calculator input:@"="];
     [calculator input:@"*"];
     [calculator input:@"5"];
     [calculator input:@"="];
-    STAssertTrue([[calculator displayValue] isEqualToString:@"30"], @"(2*3)*5 should be 30, got %@", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"30"], @"'2*3=*5' should be 30, got %@", [calculator displayValue]);
+}
+
+- (void) testChainedComputation {
+    [calculator input:@"C"];
+    [calculator input:@"2"];
+    [calculator input:@"+"];
+    [calculator input:@"3"];
+    [calculator input:@"*"];
+    [calculator input:@"5"];
+    [calculator input:@"="];
+    STAssertTrue([[calculator displayValue] isEqualToString:@"25"], @"'2+3*5' should be 25, got %@", [calculator displayValue]);
 }
 
 
