@@ -252,6 +252,15 @@
     STAssertTrue([[calculator displayValue] isEqualToString:@"7"], @"'5+-3' should be 7, got %@", [calculator displayValue]);
 }
 
+- (void) testDoublePunchEquals {
+    // wierd, the first plus adds 5 to self, assuming per spec
+    [calculator input:@"C"];
+    [calculator input:@"5"];
+    [calculator input:@"="];
+    [calculator input:@"="];
+    STAssertTrue([[calculator displayValue] isEqualToString:@"5"], @"'5==' should be 5, got %@", [calculator displayValue]);
+}
+
 /* testInputException ensures that the input: method throws an exception in three situations:
  * 1. The argument contains more than one character.
  * 2. The argument contains an invalid character.
