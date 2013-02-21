@@ -227,7 +227,7 @@
     [calculator input:@"*"];
     [calculator input:@"5"];
     [calculator input:@"="];
-    STAssertTrue([[calculator displayValue] isEqualToString:@"30"], @"'2*3=*5' should be 30, got %@", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"25"], @"'2*3=*5' should be 25, got %@", [calculator displayValue]);
 }
 
 - (void) testChainedComputation {
