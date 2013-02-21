@@ -218,6 +218,19 @@
    NSLog(@"%@ end", self.name);
 }
 
+- (void) testChainedComputation {
+    [calculator input:@"C"];
+    [calculator input:@"2"];
+    [calculator input:@"*"];
+    [calculator input:@"3"];
+    [calculator input:@"="];
+    [calculator input:@"*"];
+    [calculator input:@"5"];
+    [calculator input:@"="];
+    STAssertTrue([[calculator displayValue] isEqualToString:@"30"], @"(2*3)*5 should be 30, got %@", [calculator displayValue]);
+}
+
+
 /* testInputException ensures that the input: method throws an exception in three situations:
  * 1. The argument contains more than one character.
  * 2. The argument contains an invalid character.
