@@ -70,7 +70,7 @@
    [calc_view_controller press:[calc_view viewWithTag:14]];  // -
    [calc_view_controller press:[calc_view viewWithTag: 2]];  // 2
    [calc_view_controller press:[calc_view viewWithTag:12]];  // =   
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"4"], @"");
+   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"5"], @"");
 }
 
 /* testDivision performs a simple division test.
