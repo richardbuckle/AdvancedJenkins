@@ -21,8 +21,6 @@
 
 @implementation CalcApplicationTests
 
-/* The setUp method is called automatically for each test-case method (methods whose name starts with 'test').
- */
 - (void) setUp {
     app_delegate         = [[[UIApplication sharedApplication] delegate] retain];
     calc_view_controller = app_delegate.calcViewController;
