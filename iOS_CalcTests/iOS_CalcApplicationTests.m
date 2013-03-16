@@ -72,57 +72,72 @@
     STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown], @"Doesn't support portrait upside down");
 }
 
+- (UIView *) viewForKeystroke:(NSString *)keyStroke {
+    NSInteger tag = [keystrokesToViewTags[keyStroke] intValue];
+    return [calc_view viewWithTag:tag];
+}
+
+- (void) pressViewForKeystroke:(NSString *)keyStroke {
+    UIView * view = [self viewForKeystroke:keyStroke];
+    [calc_view_controller press:view];
+}
+
+- (void) expectDisplayFieldToBe:(NSString *)expected {
+    NSString *actual = [calc_view_controller.displayField text];
+    STAssertTrue([actual isEqualToString:expected], @"Expected %@, got%@.", expected, actual);
+}
+
 /* testAddition performs a chained addition test.
  * The test has two parts:
  * 1. Check: 6 + 2 = 8.
  * 2. Check: display + 2 = 10.
  */
 - (void) testAddition {
-   [calc_view_controller press:[calc_view viewWithTag: 6]];  // 6
-   [calc_view_controller press:[calc_view viewWithTag:13]];  // +
-   [calc_view_controller press:[calc_view viewWithTag: 2]];  // 2
-   [calc_view_controller press:[calc_view viewWithTag:12]];  // =   
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"8"], @"Part 1 failed.");
-   
-   [calc_view_controller press:[calc_view viewWithTag:13]];  // +
-   [calc_view_controller press:[calc_view viewWithTag: 2]];  // 2
-   [calc_view_controller press:[calc_view viewWithTag:12]];  // =      
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"10"], @"Part 2 failed.");
+    [self pressViewForKeystroke:@"6"];
+    [self pressViewForKeystroke:@"+"];
+    [self pressViewForKeystroke:@"2"];
+    [self pressViewForKeystroke:@"="];
+    [self expectDisplayFieldToBe:@"8"];
+
+    [self pressViewForKeystroke:@"+"];
+    [self pressViewForKeystroke:@"2"];
+    [self pressViewForKeystroke:@"="];
+    [self expectDisplayFieldToBe:@"10"];
 }
 
 /* testSubtraction performs a simple subtraction test.
  * Check: 6 - 2 = 4.
  */
 - (void) testSubtraction {
-   [calc_view_controller press:[calc_view viewWithTag: 6]];  // 6
-   [calc_view_controller press:[calc_view viewWithTag:14]];  // -
-   [calc_view_controller press:[calc_view viewWithTag: 2]];  // 2
-   [calc_view_controller press:[calc_view viewWithTag:12]];  // =   
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"4"], @"");
+    [self pressViewForKeystroke:@"6"];
+    [self pressViewForKeystroke:@"-"];
+    [self pressViewForKeystroke:@"2"];
+    [self pressViewForKeystroke:@"="];
+    [self expectDisplayFieldToBe:@"4"];
 }
 
 /* testDivision performs a simple division test.
  * Check: 25 / 4 = 6.25.
  */
 - (void) testDivision {
-   [calc_view_controller press:[calc_view viewWithTag: 2]];  // 2
-   [calc_view_controller press:[calc_view viewWithTag: 5]];  // 5
-   [calc_view_controller press:[calc_view viewWithTag:16]];  // /
-   [calc_view_controller press:[calc_view viewWithTag: 4]];  // 4
-   [calc_view_controller press:[calc_view viewWithTag:12]];  // =   
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"6.25"], @"");
+    [self pressViewForKeystroke:@"2"];
+    [self pressViewForKeystroke:@"5"];
+    [self pressViewForKeystroke:@"/"];
+    [self pressViewForKeystroke:@"4"];
+    [self pressViewForKeystroke:@"="];
+    [self expectDisplayFieldToBe:@"6.25"];
 }
 
 /* testMultiplication performs a simple multiplication test.
  * Check: 19 x 8 = 152.
  */
 - (void) testMultiplication {
-   [calc_view_controller press:[calc_view viewWithTag: 1]];  // 1
-   [calc_view_controller press:[calc_view viewWithTag: 9]];  // 9
-   [calc_view_controller press:[calc_view viewWithTag:15]];  // *
-   [calc_view_controller press:[calc_view viewWithTag: 8]];  // 8
-   [calc_view_controller press:[calc_view viewWithTag:12]];  // =
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"152"], @"");
+    [self pressViewForKeystroke:@"1"];
+    [self pressViewForKeystroke:@"9"];
+    [self pressViewForKeystroke:@"*"];
+    [self pressViewForKeystroke:@"8"];
+    [self pressViewForKeystroke:@"="];
+    [self expectDisplayFieldToBe:@"152"];
 }
 
 /* testDelete tests the functionality of the D (Delete) key.
@@ -131,23 +146,26 @@
  *    the correct display contains the expected value after each D press.
  */
 - (void) testDelete {
-   [calc_view_controller press:[calc_view viewWithTag: 1]];  // 1
-   [calc_view_controller press:[calc_view viewWithTag: 9]];  // 9
-   [calc_view_controller press:[calc_view viewWithTag: 8]];  // 8
-   [calc_view_controller press:[calc_view viewWithTag: 7]];  // 7
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"1987"], @"Part 1 failed.");
-   
-   [calc_view_controller press:[calc_view viewWithTag:19]];  // D (delete)
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"198"],  @"Part 2 failed.");      
-   
-   [calc_view_controller press:[calc_view viewWithTag:19]];  // D (delete)
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"19"],   @"Part 3 failed.");      
-   
-   [calc_view_controller press:[calc_view viewWithTag:19]];  // D (delete)
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"1"],    @"Part 4 failed.");      
-   
-   [calc_view_controller press:[calc_view viewWithTag:19]];  // D (delete)
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"0"],    @"Part 5 failed.");
+    [self pressViewForKeystroke:@"1"];
+    [self pressViewForKeystroke:@"9"];
+    [self pressViewForKeystroke:@"8"];
+    [self pressViewForKeystroke:@"7"];
+    [self expectDisplayFieldToBe:@"1987"];
+    
+    [self pressViewForKeystroke:@"D"];
+    [self expectDisplayFieldToBe:@"198"];
+    
+    [self pressViewForKeystroke:@"D"];
+    [self expectDisplayFieldToBe:@"19"];
+    
+    [self pressViewForKeystroke:@"D"];
+    [self expectDisplayFieldToBe:@"1"];
+    
+    [self pressViewForKeystroke:@"D"];
+    [self expectDisplayFieldToBe:@"0"];
+    
+    [self pressViewForKeystroke:@"D"];
+    [self expectDisplayFieldToBe:@"0"];
 }
 
 /* testClear tests the functionality of the C (Clear).
@@ -166,32 +184,32 @@
  *  - Ensure the display contains the value 2.
  */
 - (void) testClear {
-   [calc_view_controller press:[calc_view viewWithTag: 2]];  // 2
-   [calc_view_controller press:[calc_view viewWithTag: 5]];  // 5
-   [calc_view_controller press:[calc_view viewWithTag:16]];  // /
-   [calc_view_controller press:[calc_view viewWithTag: 4]];  // 4
-   [calc_view_controller press:[calc_view viewWithTag:11]];  // C (clear)
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"0"], @"Part 1 failed.");
-   
-   [calc_view_controller press:[calc_view viewWithTag: 5]];  // 5
-   [calc_view_controller press:[calc_view viewWithTag:12]];  // =
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"5"], @"Part 2 failed.");
-   
-   [calc_view_controller press:[calc_view viewWithTag: 1]];  // 1
-   [calc_view_controller press:[calc_view viewWithTag: 9]];  // 9
-   [calc_view_controller press:[calc_view viewWithTag:15]];  // x
-   [calc_view_controller press:[calc_view viewWithTag: 8]];  // 8
-   [calc_view_controller press:[calc_view viewWithTag:11]];  // C (clear)
-   [calc_view_controller press:[calc_view viewWithTag:11]];  // C (all clear)
-   [calc_view_controller press:[calc_view viewWithTag:13]];  // +
-   [calc_view_controller press:[calc_view viewWithTag: 2]];  // 2
-   [calc_view_controller press:[calc_view viewWithTag:12]];  // =   
-   STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"2"], @"Part 3 failed.");
+    [self pressViewForKeystroke:@"2"];
+    [self pressViewForKeystroke:@"5"];
+    [self pressViewForKeystroke:@"/"];
+    [self pressViewForKeystroke:@"4"];
+    [self pressViewForKeystroke:@"C"];
+    [self expectDisplayFieldToBe:@"0"];
+    
+    [self pressViewForKeystroke:@"5"];
+    [self pressViewForKeystroke:@"="];
+    [self expectDisplayFieldToBe:@"5"];
+    
+    [self pressViewForKeystroke:@"1"];
+    [self pressViewForKeystroke:@"9"];
+    [self pressViewForKeystroke:@"*"];
+    [self pressViewForKeystroke:@"8"];
+    [self pressViewForKeystroke:@"C"];
+    [self pressViewForKeystroke:@"C"];
+    [self pressViewForKeystroke:@"+"];
+    [self pressViewForKeystroke:@"2"];
+    [self pressViewForKeystroke:@"="];
+    [self expectDisplayFieldToBe:@"2"];
 }
 
 - (void) testInitialClear {
-    [calc_view_controller press:[calc_view viewWithTag:11]];  // C (clear)
-    STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"0"], @"Initial clear should give 0.");
+    [self pressViewForKeystroke:@"C"];
+    [self expectDisplayFieldToBe:@"0"];
 }
 
 - (void) testNilInputThrows {
@@ -216,8 +234,7 @@
 
 - (void) testSubviewTags {
     for (NSString *keystroke in keystrokesToViewTags) {
-        NSInteger tag = [keystrokesToViewTags[keystroke] intValue];
-        UIView *subview = [calc_view viewWithTag:tag];
+        UIView *subview = [self viewForKeystroke:keystroke];
         [self expectTitle:keystroke forView:subview];
     }
 }
