@@ -30,6 +30,7 @@
 }
 
 - (void) tearDown {
+    [app_delegate release];
 }
 
 
