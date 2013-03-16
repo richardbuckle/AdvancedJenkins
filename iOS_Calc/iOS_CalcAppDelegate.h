@@ -54,8 +54,8 @@
    CalcViewController *calcViewController;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow  *window;
-@property (nonatomic, retain) CalcViewController *calcViewController;
+@property (nonatomic, strong) IBOutlet UIWindow  *window;
+@property (nonatomic, strong) CalcViewController *calcViewController;
 
 @end
 

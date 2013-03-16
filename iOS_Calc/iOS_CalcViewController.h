@@ -53,7 +53,7 @@
    Calculator *calculator;
 }
 
-@property (nonatomic, retain) IBOutlet id displayField;
+@property (nonatomic, strong) IBOutlet id displayField;
 
 - (IBAction) press:(id)sender;
 

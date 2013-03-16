@@ -63,15 +63,10 @@ const NSString *Clear     = @"C";
 
 - init {
    if ((self = [super init])) {
-      _display = [[NSMutableString stringWithCapacity:20] retain];
+      _display = [NSMutableString stringWithCapacity:20];
       _operator = nil;
    }
    return self;
-}
-- (void) dealloc {
-   [_display release];
-   [_operator release];
-   [super dealloc];
 }
 
 
@@ -186,7 +181,7 @@ const NSString *Clear     = @"C";
  */
 - (NSString *) displayValue {
    if ([_display length]) {
-      return [[_display copy] autorelease];
+      return [_display copy];
    }
    return @"0";
 }

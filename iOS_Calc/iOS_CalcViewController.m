@@ -63,10 +63,6 @@
    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void) dealloc {
-   [calculator release];
-   [super dealloc];
-}
 
 - (IBAction) press:(id)sender {
     if (sender == self.displayField) return;

@@ -62,7 +62,6 @@
 }
 
 - init;
-- (void) dealloc;
 
 
 /*!

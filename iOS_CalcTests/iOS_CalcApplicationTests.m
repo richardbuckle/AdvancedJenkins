@@ -22,7 +22,7 @@
 @implementation CalcApplicationTests
 
 - (void) setUp {
-    app_delegate         = [[[UIApplication sharedApplication] delegate] retain];
+    app_delegate         = [[UIApplication sharedApplication] delegate];
     calc_view_controller = app_delegate.calcViewController;
     calc_view            = calc_view_controller.view;
     keystrokesToViewTags = @{
@@ -55,7 +55,6 @@
 }
 
 - (void) tearDown {
-    [app_delegate release];
 };
 
 - (UIView *) viewForKeystroke:(NSString *)keyStroke {
