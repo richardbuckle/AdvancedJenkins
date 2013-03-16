@@ -62,7 +62,6 @@
 /* The setUp method is called automatically before each test-case method (methods whose name starts with 'test').
  */
 - (void) setUp {
-   NSLog(@"%@ setUp", self.name);
    calculator = [[Calculator alloc] init];
    STAssertNotNil(calculator, @"Cannot create Calculator instance");
 }
@@ -72,36 +71,35 @@
  */
 - (void) tearDown {
    [calculator release];
-   NSLog(@"%@ tearDown", self.name);
 }
 
 - (void)testNoInput {
-    STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"No input should produce 0. Instead got [%@]", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"No input should produce 0, got [%@]", [calculator displayValue]);
 }
 
 - (void)testDeleteNonexistentChar {
     [calculator input:@"D"];
-    STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"Initial delete of nonexistent char should produce 0. Instead got [%@]", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"Initial delete of nonexistent char should produce 0, got [%@]", [calculator displayValue]);
 }
 
 - (void)testInputAndDeleteOneChar {
     [calculator input:@"6"];
     [calculator input:@"D"];
-    STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"Input and delete of one char should produce 0. Instead got [%@]", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"Input and delete of one char should produce 0, got [%@]", [calculator displayValue]);
 }
 
 - (void)testInputTwoCharsAndDeleteOneChar {
     [calculator input:@"6"];
     [calculator input:@"7"];
     [calculator input:@"D"];
-    STAssertTrue([[calculator displayValue] isEqualToString:@"6"], @"Input 67 then delete should produce 6. Instead got [%@]", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"6"], @"Input 67 then delete should produce 6, got [%@]", [calculator displayValue]);
 }
 
 - (void)testDecimalInput {
     [calculator input:@"6"];
     [calculator input:@"."];
     [calculator input:@"7"];
-    STAssertTrue([[calculator displayValue] isEqualToString:@"6.7"], @"Input 6.7 then delete should produce 6.7. Instead got [%@]", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"6.7"], @"Input 6.7 should produce 6.7, got [%@]", [calculator displayValue]);
 }
 
 - (void)testDecimalInputWithTwoPoints {
@@ -109,7 +107,7 @@
     [calculator input:@"."];
     [calculator input:@"."];
     [calculator input:@"7"];
-    STAssertTrue([[calculator displayValue] isEqualToString:@"6.7"], @"Input 6..7 then delete should produce 6.7. Instead got [%@]", [calculator displayValue]);
+    STAssertTrue([[calculator displayValue] isEqualToString:@"6.7"], @"Input 6..7 should produce 6.7, got [%@]", [calculator displayValue]);
 }
 
 /* testAddition performs a simple addition test: 6 + 2 = 8.
@@ -118,13 +116,11 @@
  * 2. Confirm that displayValue is 8.
  */
 - (void) testAddition {
-   NSLog(@"%@ start", self.name);   // self.name is the name of the test-case method.
    [calculator input:@"6"];
    [calculator input:@"+"];
    [calculator input:@"2"];
    [calculator input:@"="];
-   STAssertTrue([[calculator displayValue] isEqualToString:@"8"], @"");
-   NSLog(@"%@ end", self.name);
+   STAssertTrue([[calculator displayValue] isEqualToString:@"8"], @"'6+2=' should give 8, got %@", [calculator displayValue]);
 }
 
 /* testSubtraction performs a simple subtraction test: 19 - 2 = 17.
@@ -133,14 +129,12 @@
  * 2. Confirm that displayValue is 17.
  */
 - (void) testSubtraction {
-   NSLog(@"%@ start", self.name);   // Use NSLog to generate additional build-results output.
    [calculator input:@"1"];
    [calculator input:@"9"];
    [calculator input:@"-"];
    [calculator input:@"2"];
    [calculator input:@"="];
-   STAssertTrue([[calculator displayValue] isEqualToString:@"17"], @"");
-   NSLog(@"%@ end", self.name);
+   STAssertTrue([[calculator displayValue] isEqualToString:@"17"], @"'19-2=' should give 17, got %@", [calculator displayValue]);
 }
 
 /* testDivision performs a simple division test: 19 / 8 = 2.375.
@@ -149,14 +143,12 @@
  * 2. Confirm that displayValue is 2.375.
  */
 - (void) testDivision {
-   NSLog(@"%@ start", self.name);
    [calculator input:@"1"];
    [calculator input:@"9"];
    [calculator input:@"/"];
    [calculator input:@"8"];
    [calculator input:@"="];
-   STAssertTrue([[calculator displayValue] isEqualToString:@"2.375"], @"");
-   NSLog(@"%@ end", self.name);
+   STAssertTrue([[calculator displayValue] isEqualToString:@"2.375"], @"'19/8=' should give 2.375, got %@", [calculator displayValue]);
 }
 
 /* testMultiplication performs a simple multiplication test: 6 * 2 = 12.
@@ -165,13 +157,11 @@
  * 2. Confirm that displayValue is 12.
  */
 - (void) testMultiplication {
-   NSLog(@"%@ start", self.name);
    [calculator input:@"6"];
    [calculator input:@"*"];
    [calculator input:@"2"];
    [calculator input:@"="];
-   STAssertTrue([[calculator displayValue] isEqualToString:@"12"], @"");
-   NSLog(@"%@ end", self.name);
+   STAssertTrue([[calculator displayValue] isEqualToString:@"12"], @"'6*2=' should give 12, got %@", [calculator displayValue]);
 }
 
 /* testSubtractionNegativeResult performs a simple subtraction test with a negative result: 6 - 24 = -18.
@@ -180,42 +170,36 @@
  * 2. Confirm that displayValue is -18.
  */
 - (void) testSubtractionNegativeResult {
-   NSLog(@"%@ start", self.name);
    [calculator input:@"6"];
    [calculator input:@"-"];
    [calculator input:@"2"];
    [calculator input:@"4"];
    [calculator input:@"="];
-   STAssertTrue([[calculator displayValue] isEqualToString:@"-18"], @"");
-   NSLog(@"%@ end", self.name);
+   STAssertTrue([[calculator displayValue] isEqualToString:@"-18"], @"'6-24=' should give -18, got %@", [calculator displayValue]);
 }
 
 /* testClearLastEntry ensures that the clear (C) key clears the last entry when used once.
  */
 - (void) testClearLastEntry {
-   NSLog(@"%@ start", self.name);
    [calculator input:@"7"];
    [calculator input:@"+"];
    [calculator input:@"3"];
    [calculator input:@"C"];
    [calculator input:@"4"];
    [calculator input:@"="];   
-   STAssertTrue([[calculator displayValue] isEqualToString:@"11"], @"");
-   NSLog(@"%@ end", self.name);
+   STAssertTrue([[calculator displayValue] isEqualToString:@"11"], @"'7+3C4= should give 11, got %@", [calculator displayValue]);
 }
 
 /* testClearComputation ensures that the clear (C) key clears the computation when used twice.
  */
 - (void) testClearComputation {
-   NSLog(@"%@ start", self.name);
    [calculator input:@"C"];
    [calculator input:@"7"];
    [calculator input:@"*"];
    [calculator input:@"3"];
    [calculator input:@"C"];
    [calculator input:@"C"];
-   STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"");   
-   NSLog(@"%@ end", self.name);
+   STAssertTrue([[calculator displayValue] isEqualToString:@"0"], @"CC at the end of a computation should clear it, got %@", [calculator displayValue]);   
 }
 
 - (void) testExplicitChainedComputation {
@@ -242,7 +226,7 @@
 }
 
 - (void) testOperatorChange {
-    // wierd, the first plus adds 5 to self, assuming per spec
+    // wierd, the first plus adds 5 to itself, assuming per spec
     [calculator input:@"C"];
     [calculator input:@"5"];
     [calculator input:@"+"];
@@ -253,7 +237,6 @@
 }
 
 - (void) testDoublePunchEquals {
-    // wierd, the first plus adds 5 to self, assuming per spec
     [calculator input:@"C"];
     [calculator input:@"5"];
     [calculator input:@"="];
@@ -262,15 +245,15 @@
 }
 
 - (void) testInputExceptionMultiChar {
-    STAssertThrows([calculator input:@"67"], @"No exception for multicharacter input.");
+    STAssertThrows([calculator input:@"67"], @"Multicharacter input should raise an exception.");
 }
 
 - (void) testInputExceptionInvalidCar {
-    STAssertThrows([calculator input:@"j"], @"No exception for invalid input.");
+    STAssertThrows([calculator input:@"j"], @"Invalid input should raise an exception.");
 }
 
 - (void) testInputExceptionNilInput {
-    STAssertThrows([calculator input:nil],   @"No exception for nil input.");
+    STAssertThrows([calculator input:nil],   @"Nil input should raise an exception.");
 }
 
 @end
