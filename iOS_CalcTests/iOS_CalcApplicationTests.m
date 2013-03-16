@@ -13,7 +13,7 @@
     CalcAppDelegate    *app_delegate;
     CalcViewController *calc_view_controller;
     UIView             *calc_view;
-    
+    NSDictionary       *keystrokesToViewTags;
 }
 
 @end
@@ -24,14 +24,41 @@
 /* The setUp method is called automatically for each test-case method (methods whose name starts with 'test').
  */
 - (void) setUp {
-   app_delegate         = [[[UIApplication sharedApplication] delegate] retain];
-   calc_view_controller = app_delegate.calcViewController;
-   calc_view            = calc_view_controller.view;
+    app_delegate         = [[[UIApplication sharedApplication] delegate] retain];
+    calc_view_controller = app_delegate.calcViewController;
+    calc_view            = calc_view_controller.view;
+    keystrokesToViewTags = @{
+                             // digits
+                             @"1": @1,
+                             @"2": @2,
+                             @"3": @3,
+                             @"4": @4,
+                             @"5": @5,
+                             @"6": @6,
+                             @"7": @7,
+                             @"8": @8,
+                             @"9": @9,
+                             @"0": @10,
+                             
+                             // operators
+                             @"+": @13,
+                             @"-": @14,
+                             @"*": @15,
+                             @"/": @16,
+                             
+                             // commands
+                             @"C": @11,
+                             @"=": @12,
+                             @"D": @19,
+                             
+                             // decimal point
+                             @".": @30,
+                             };
 }
 
 - (void) tearDown {
     [app_delegate release];
-}
+};
 
 
 - (void) testAppDelegate {
@@ -176,8 +203,22 @@
 }
 
 - (void) testNoViewsGiveInvalidInput {
-    for (UIView *subview in calc_view_controller.view.subviews) {
+    for (UIView *subview in calc_view.subviews) {
         STAssertNoThrow([calc_view_controller press:subview], @"Unexpected exception from pressing subview %@", [subview description]);
+    }
+}
+
+- (void) expectTitle:(NSString *)expectedTitle forView:(UIView *)view {
+    STAssertTrue([view respondsToSelector:@selector(titleForState:)], @"View %@ doesn't respond to titleForState:", [view description]);
+    NSString *actualTitle = [(id)view titleForState:UIControlStateNormal];
+    STAssertTrue([actualTitle isEqualToString:expectedTitle], @"Expected title %@ for view with tag %i, got %@", expectedTitle, [view tag], actualTitle);
+}
+
+- (void) testSubviewTags {
+    for (NSString *keystroke in keystrokesToViewTags) {
+        NSInteger tag = [keystrokesToViewTags[keystroke] intValue];
+        UIView *subview = [calc_view viewWithTag:tag];
+        [self expectTitle:keystroke forView:subview];
     }
 }
 
