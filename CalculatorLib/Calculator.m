@@ -136,7 +136,7 @@ const NSString *Clear     = @"C";
                      _operand = _operand / operand2;
                      break;
                }
-               [_display setString: [[NSNumber numberWithDouble: _operand] stringValue]];
+               [_display setString: [@(_operand) stringValue]];
             }
             // Save the operation (if this is a chained computation).
             _operator = ([input_character isEqualToString:(NSString *)Equals])? nil : input_character;
@@ -170,7 +170,7 @@ const NSString *Clear     = @"C";
    }
    if (bad_character) {
         // Raise exception for unexpected character.
-        NSDictionary *errorDict = [NSDictionary dictionaryWithObjectsAndKeys: input_character, @"arg0", nil];
+        NSDictionary *errorDict = @{@"arg0": input_character};
         NSException *exception = [NSException exceptionWithName:NSInvalidArgumentException
                                                          reason:@"The input_character parameter contains an unexpected value."
                                                        userInfo:errorDict];
