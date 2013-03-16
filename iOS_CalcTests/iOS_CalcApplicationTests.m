@@ -162,4 +162,9 @@
    STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"2"], @"Part 3 failed.");
 }
 
+- (void) testInitialClear {
+    [calc_view_controller press:[calc_view viewWithTag:11]];  // C (clear)
+    STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"0"], @"Initial clear should give 0.");
+}
+
 @end
