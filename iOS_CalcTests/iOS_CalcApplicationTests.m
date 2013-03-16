@@ -60,18 +60,6 @@
     [app_delegate release];
 };
 
-
-- (void) testAppDelegate {
-   STAssertNotNil(app_delegate, @"Cannot find the application delegate");
-}
-
-- (void) testIsPortraitOnly {
-    STAssertTrue([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait], @"Supports portrait");
-    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], @"Doesn't support landscape left");
-    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight], @"Doesn't support landscape right");
-    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown], @"Doesn't support portrait upside down");
-}
-
 - (UIView *) viewForKeystroke:(NSString *)keyStroke {
     NSInteger tag = [keystrokesToViewTags[keyStroke] intValue];
     return [calc_view viewWithTag:tag];
@@ -85,6 +73,23 @@
 - (void) expectDisplayFieldToBe:(NSString *)expected {
     NSString *actual = [calc_view_controller.displayField text];
     STAssertTrue([actual isEqualToString:expected], @"Expected %@, got%@.", expected, actual);
+}
+
+- (void) expectTitle:(NSString *)expectedTitle forView:(UIView *)view {
+    STAssertTrue([view respondsToSelector:@selector(titleForState:)], @"View %@ doesn't respond to titleForState:", [view description]);
+    NSString *actualTitle = [(id)view titleForState:UIControlStateNormal];
+    STAssertTrue([actualTitle isEqualToString:expectedTitle], @"Expected title %@ for view with tag %i, got %@", expectedTitle, [view tag], actualTitle);
+}
+
+- (void) testAppDelegate {
+   STAssertNotNil(app_delegate, @"Cannot find the application delegate");
+}
+
+- (void) testIsPortraitOnly {
+    STAssertTrue([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait], @"Supports portrait");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], @"Doesn't support landscape left");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight], @"Doesn't support landscape right");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown], @"Doesn't support portrait upside down");
 }
 
 /* testAddition performs a chained addition test.
@@ -224,12 +229,6 @@
     for (UIView *subview in calc_view.subviews) {
         STAssertNoThrow([calc_view_controller press:subview], @"Unexpected exception from pressing subview %@", [subview description]);
     }
-}
-
-- (void) expectTitle:(NSString *)expectedTitle forView:(UIView *)view {
-    STAssertTrue([view respondsToSelector:@selector(titleForState:)], @"View %@ doesn't respond to titleForState:", [view description]);
-    NSString *actualTitle = [(id)view titleForState:UIControlStateNormal];
-    STAssertTrue([actualTitle isEqualToString:expectedTitle], @"Expected title %@ for view with tag %i, got %@", expectedTitle, [view tag], actualTitle);
 }
 
 - (void) testSubviewTags {
