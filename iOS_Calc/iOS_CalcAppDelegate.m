@@ -62,11 +62,9 @@
    [window makeKeyAndVisible];
 }
 
-
-- (void) dealloc {
-   [calcViewController release];
-   [window release];
-   [super dealloc];
+- (void)applicationWillTerminate:(UIApplication *)application {
+    self.calcViewController = nil;
+    self.window = nil;
 }
 
 - (void) applicationDidReceiveMemoryWarning:(UIApplication *)application {
