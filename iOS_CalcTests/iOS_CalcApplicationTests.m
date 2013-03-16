@@ -168,7 +168,11 @@
 }
 
 - (void) testNilInputThrows {
-    STAssertThrows([calc_view_controller press:nil], @"Press of a nil field should throw.");
+    STAssertThrows([calc_view_controller press:nil], @"Press of a nil view should throw.");
+}
+
+- (void) testPressingInvalidTagThrows {
+    STAssertThrows([calc_view_controller press:[calc_view viewWithTag:-1]], @"Press of a non-existent view tag should throw.");
 }
 
 @end
