@@ -175,4 +175,10 @@
     STAssertThrows([calc_view_controller press:[calc_view viewWithTag:-1]], @"Press of a non-existent view tag should throw.");
 }
 
+- (void) testNoViewsGiveInvalidInput {
+    for (UIView *subview in calc_view_controller.view.subviews) {
+        STAssertNoThrow([calc_view_controller press:subview], @"Unexpected exception from pressing subview %@", [subview description]);
+    }
+}
+
 @end

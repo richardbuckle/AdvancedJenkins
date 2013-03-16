@@ -69,6 +69,7 @@
 }
 
 - (IBAction) press:(id)sender {
+    if (sender == self.displayField) return;
    [calculator input:[sender titleForState:UIControlStateNormal]];
    [displayField setText:[calculator displayValue]];
 }
