@@ -46,15 +46,16 @@
 */
 
 #import "iOS_CalcViewController.h"
+#import "Calculator.h"
 
 
 @implementation CalcViewController
 
-@synthesize displayField;
+@synthesize displayField, calculator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-      calculator = [[Calculator alloc] init];
+      self.calculator = [[Calculator alloc] init];
    }
    return self;
 }
@@ -66,8 +67,8 @@
 
 - (IBAction) press:(id)sender {
     if (sender == self.displayField) return;
-   [calculator input:[sender titleForState:UIControlStateNormal]];
-   [displayField setText:[calculator displayValue]];
+   [self.calculator input:[sender titleForState:UIControlStateNormal]];
+   [displayField setText:[self.calculator displayValue]];
 }
 
 @end

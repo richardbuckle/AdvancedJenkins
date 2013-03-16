@@ -56,8 +56,7 @@
 - (void) applicationDidFinishLaunching:(UIApplication *)application {    
 
    // Override point for customization after application launch
-   CalcViewController *_calcViewController = [[CalcViewController alloc] initWithNibName:@"CalcView" bundle:[NSBundle mainBundle]];
-   self.calcViewController = _calcViewController;
+   self.calcViewController = [[CalcViewController alloc] initWithNibName:@"CalcView" bundle:[NSBundle mainBundle]];
    [window addSubview:[calcViewController view]];
    [window makeKeyAndVisible];
 }

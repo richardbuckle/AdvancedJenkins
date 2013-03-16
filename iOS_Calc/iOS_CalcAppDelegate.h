@@ -49,10 +49,7 @@
 
 @class CalcViewController;
 
-@interface CalcAppDelegate : NSObject <UIApplicationDelegate> {
-   UIWindow           *window;
-   CalcViewController *calcViewController;
-}
+@interface CalcAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow  *window;
 @property (nonatomic, strong) CalcViewController *calcViewController;

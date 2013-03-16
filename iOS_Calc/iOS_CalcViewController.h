@@ -46,14 +46,13 @@
 */
 
 #import <UIKit/UIKit.h>
-#import "Calculator.h"
 
-@interface CalcViewController : UIViewController {
-   id          displayField;
-   Calculator *calculator;
-}
+@class Calculator;
+
+@interface CalcViewController : UIViewController
 
 @property (nonatomic, strong) IBOutlet id displayField;
+@property (nonatomic, strong) Calculator *calculator;
 
 - (IBAction) press:(id)sender;
 
