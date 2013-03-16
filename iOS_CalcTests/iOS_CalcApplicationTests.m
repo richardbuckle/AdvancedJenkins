@@ -167,4 +167,8 @@
     STAssertTrue([[calc_view_controller.displayField text] isEqualToString:@"0"], @"Initial clear should give 0.");
 }
 
+- (void) testNilInputThrows {
+    STAssertThrows([calc_view_controller press:nil], @"Press of a nil field should throw.");
+}
+
 @end
