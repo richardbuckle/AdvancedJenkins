@@ -72,7 +72,7 @@
 
 - (void) expectDisplayFieldToBe:(NSString *)expected {
     NSString *actual = [calc_view_controller.displayField text];
-    STAssertTrue([actual isEqualToString:expected], @"Expected %@, got%@.", expected, actual);
+    STAssertTrue([actual isEqualToString:expected], @"Expected displayField to be %@, got %@.", expected, actual);
 }
 
 - (void) expectTitle:(NSString *)expectedTitle forView:(UIView *)view {
@@ -86,10 +86,10 @@
 }
 
 - (void) testIsPortraitOnly {
-    STAssertTrue([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait], @"Supports portrait");
-    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], @"Doesn't support landscape left");
-    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight], @"Doesn't support landscape right");
-    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown], @"Doesn't support portrait upside down");
+    STAssertTrue([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait], @"Should support portrait");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], @"Should not support landscape left");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight], @"Should not support landscape right");
+    STAssertFalse([calc_view_controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown], @"Should not support portrait upside down");
 }
 
 /* testAddition performs a chained addition test.
