@@ -469,7 +469,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${DEVELOPER_TOOLS_DIR}/RunUnitTests\"\n";
+			shellScript = "# Run the unit tests in this test bundle.\nif [ -z \"${WANT_IOS_SIM}\" ]\nthen\n#   Running under Xcode\n    \"${DEVELOPER_TOOLS_DIR}/RunUnitTests\"\nelse\n#   Running under xcodebuild, so use ios-sim installed from Homebrew into /usr/local/bin/ios-sim\n    killall -m -KILL \"iPhone Simulator\" || true\n    our_test_bundle_path=$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION\n    our_env=(\"--setenv\" \"DYLD_INSERT_LIBRARIES=/../../Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection\")\n    our_env=(\"${our_env[@]}\" \"--setenv\" \"XCInjectBundle=${our_test_bundle_path}\")\n    our_env=(\"${our_env[@]}\" \"--setenv\" \"XCInjectBundleInto=${TEST_HOST}\")\n    our_app_location=\"$(dirname \"${TEST_HOST}\")\"\n    /usr/local/bin/ios-sim launch \"${our_app_location}\" \"${our_env[@]}\" --args -SenTest All \"${our_test_bundle_path}\" --exit\n    killall -m -KILL \"iPhone Simulator\" || true\n    exit 0\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
