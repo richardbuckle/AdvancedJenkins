@@ -3,10 +3,10 @@ Jenkins is your CI butler, and any reader of [P.G. Wodehouse](http://en.wikipedi
 
 When putting the following configs together I had to wade through a great many sources, so I thought it would be useful to put everything I've learned together in one document. I'm going to walk you through creating a fully instrumented Jenkins setup from scratch for iOS and Mac OS X projects. It will monitor errors, static analyser results, unit tests and code coverage for you, mail you when anything goes wrong, and present the results graphically, like this:
 
-![Sample Jenkins output](./images/Jenkins-sample-output.png)
+<img src="marsedit://pending/11641160-EC43-4E16-A748-00476B74D7DF/" alt="Sample Jenkins output" title="Jenkins-sample-output.png" border="0" width="506" height="903" />
 
 ## GitHub archive
-An archive of a sample project (based on Apple sample code) together with sample Jenkins configs is available at [https://github.com/richardbuckle/AdvancedJenkins]().
+An archive of a sample project (based on Apple sample code) together with sample Jenkins configs is available at [https://github.com/richardbuckle/AdvancedJenkins](https://github.com/richardbuckle/AdvancedJenkins).
 
 ## <a id="Contents"></a>Contents
 
@@ -201,18 +201,18 @@ Next we need to do a bit of system-wide configuration of some of the plug-ins th
 ### Locks
 Find the section called "Locks":
 
-![Locks section defaults](./images/Locks-default.png)
+<img src="marsedit://pending/1327ED47-B2C4-4A64-9488-30F8828794E5/" alt="Locks section defaults" title="Locks-default.png" border="0" width="715" height="107" />
 
 Click "Add" and set the name to, say, "iOS-sim".
 
-![Locks section with iOS-sim added](./images/Locks-with-ios-sim.png)
+<img src="marsedit://pending/A4A56A8E-9F7A-4E58-8B51-A87EDF65F8E9/" alt="Locks section with iOS-sim added" title="Locks-with-ios-sim.png" border="0" width="711" height="111" />
 
 ### Configuring Clang static analyzer
 Click the button "Clang Static Analyzer installations". 
 
 Click "Add Clang Static Analyzer" and set the name to, say, `Clang-current` and the "Installation directory" to `/usr/local/bin/checker-current`. This is the symlink we created above to avoid having to revise this config when we update scan-build.
 
-![Configuring Clang static analyzer](./images/configure-clang-analyzer.png)
+<img src="marsedit://pending/3D9BA04B-9DE9-467B-8775-D3A9C1D9A6AF/" alt="Configuring Clang static analyzer" title="configure-clang-analyzer.png" border="0" width="830" height="164" />
 
 ### Any other business
 You will probably want to fill out the sections titled "Jenkins Location" and "E-mail Notification" here as well. 
@@ -275,7 +275,7 @@ Finally we call `gcovr` to generate the coverage report, outputting to `./covera
 
 Add the "Scan for compiler warnings" post-build step and configure it to use the "Apple LLVM Compiler (Clang) parser like this:
 
-![Scan for compiler warnings](./images/post-build-compiler-warnings.png)
+<img src="marsedit://pending/602C9D17-DE9F-4DA6-B475-91CF53153224/" alt="Scan for compiler warnings" title="post-build-compiler-warnings.png" border="0" width="694" height="318" />
 
 It shouldn't need any further configuration.
 
@@ -283,7 +283,7 @@ It shouldn't need any further configuration.
 
 Add the "Publish Clang Scan-Build Results" post-build step:
 
-![Publish Clang Scan-Build Results](./images/post-build-scan-build.png)
+<img src="marsedit://pending/C0E9128E-9D4F-4616-94C1-28B9CC02A1DE/" alt="Publish Clang Scan-Build Results" title="post-build-scan-build.png" border="0" width="437" height="110" />
 
 Optionally, set a threshold past which the build will be marked as unstable.
 
@@ -291,13 +291,13 @@ Optionally, set a threshold past which the build will be marked as unstable.
 
 Add the "Publish Cobertura Coverage Report" post-build step, giving it the report pattern `coverage.xml`. Optionally, configure the detail to your liking:
 
-![Publish Cobertura Coverage Report](./images/post-build-cobertura.png)
+<img src="marsedit://pending/9134D178-FAD6-49AC-B456-717F9C736DB2/" alt="Publish Cobertura Coverage Report" title="post-build-cobertura.png" border="0" width="698" height="710" />
 
 #### Unit test report
 
 Add the "Publish JUnit test result report" post-build step, giving it the XML specifier `test-reports/*.xml`:
 
-![Publish JUnit test result report](./images/post-build-junit-test.png)
+<img src="marsedit://pending/DFA2D651-52C5-4B53-9AAD-FCBDE339BDF4/" alt="Publish JUnit test result report" title="post-build-junit-test.png" border="0" width="699" height="163" />
 
 #### E-mail Notification
 
@@ -311,7 +311,7 @@ That's it for the Logic tests config. The application tests config differs sligh
 
 In the "Build Environment" step, check "Locks" and select the "iOS-sim" lock:
 
-![iOS-sim lock](./images/Locks-set-on-ios-sim.png)
+<img src="marsedit://pending/5EB8B721-424E-4788-B6EC-966153677E7A/" alt="iOS-sim lock" title="Locks-set-on-ios-sim.png" border="0" width="656" height="118" />
 
 #### Shell script
 
