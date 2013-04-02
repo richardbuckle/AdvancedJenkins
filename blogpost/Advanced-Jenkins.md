@@ -10,19 +10,19 @@ An archive of a sample project (based on Apple sample code) together with sample
 
 ## <a id="Contents"></a>Contents
 
-[Installing Jenkins itself](#Installing Jenkins itself)
+[Installing Jenkins itself](#Installing-Jenkins-itself)
 
-[Installing ancillary tools](#Installing ancillary tools)
+[Installing ancillary tools](#Installing-ancillary-tools)
 
-[Install Jenkins plug-ins](#Install Jenkins plug-ins)
+[Installing Jenkins plug-ins](#Installing-Jenkins-plug-ins)
 
-[Final Jenkins configuration](#Final Jenkins configuration)
+[Final Jenkins configuration](#Final-Jenkins-configuration)
 
-[Job configuration](#Job configuration)
+[Job configuration](#Job-configuration)
 
 [Conclusion](#Conclusion)
 
-## <a id="Installing Jenkins itself"></a>Installing Jenkins itself
+## <a id="Installing-Jenkins-itself"></a>Installing Jenkins itself
 
 I'm going to assume that you'll be running Jenkins as a full Mac OS X user in a windowed session, on a secured box, perhaps a Mac Mini, and that said user already has Xcode 4.6.1 installed together with all the provisioning and code-signing set up for any TestFlight, HockeyApp, or other distribution that you might need.
 
@@ -85,7 +85,7 @@ Tip: if you ever change anything in the `jobs` dir outside the web UI, go to Das
 
 [Back to Contents](#Contents)
 
-## <a id="Installing ancillary tools"></a>Installing ancillary tools
+## <a id="Installing-ancillary-tools"></a>Installing ancillary tools
 Phew, that's over. Next I shall walk you through adding the ancillary stuff that will make your Jenkins installation vastly more useful.
 
 I'm going to put these in `usr/local/bin`. If you prefer to put them elsewhere then modify what follows accordingly.
@@ -152,7 +152,7 @@ To get `ios-sim` from Homebrew, copy it to `/usr/local/bin` and ensure that it h
 [Back to Contents](#Contents)
 
 
-## <a id="Install Jenkins plug-ins"></a>Install Jenkins plug-ins
+## <a id="Installing-Jenkins-plug-ins"></a>Installing Jenkins plug-ins
 These are what I use:
 
 ### Essential plug-ins
@@ -195,7 +195,7 @@ If any reader has the time and knowledge to fix this plug-in, I'm sure the entir
 
 [Back to Contents](#Contents)
 
-## <a id="Final Jenkins configuration"></a>Final Jenkins configuration
+## <a id="Final-Jenkins-configuration"></a>Final Jenkins configuration
 Next we need to do a bit of system-wide configuration of some of the plug-ins that we've added. From the Jenkins home page, click "Manage Jenkins", then "Configure System".
 
 ### Locks
@@ -221,7 +221,7 @@ When you're done, click the "Save" button at the very bottom of the page.
 
 [Back to Contents](#Contents)
 
-## <a id="Job configuration"></a>Job configuration
+## <a id="Job-configuration"></a>Job configuration
 
 At this point I recommend you grab my sample configs from [my GitHub repo](https://github.com/richardbuckle/AdvancedJenkins) so you can follow along. Move the two configs from the jobs directory in the repo into Jenkins' jobs directory, go to Dashboard > Manage Jenkins and click "Reload Configuration from Disk". Both configs should build "out of the box" but you may first want to visit the config page for each one and enter your email address under "E-mail Notification" at the very bottom.
 
