@@ -364,6 +364,6 @@ Now that you've got a running config, play around. Break a unit test, or introdu
 
 I hope that this article has been useful and will help you get a lot more out of Jenkins! Comments, questions and errata can be sent to @RichardBuckle on [Twitter](https://twitter.com/RichardBuckle) or [App.net](https://alpha.app.net/richardbuckle).
 
-Shameless plug: I am available for contract iOS and Mac development. If you are interested in hiring me, please see [http://www.sailmaker.co.uk/]().
+Shameless plug: I am available for contract iOS and Mac development. If you are interested in hiring me, please see [http://www.sailmaker.co.uk/](http://www.sailmaker.co.uk/).
 
 [Back to Contents](#Contents)
