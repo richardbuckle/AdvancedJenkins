@@ -1,4 +1,3 @@
-# Advanced Jenkins for iOS and Mac
 Jenkins is your CI butler, and any reader of [P.G. Wodehouse](http://en.wikipedia.org/wiki/P._G._Wodehouse) or viewer of British period drama knows that treating your host's butler well is the key to an enjoyable visit. Likewise, giving Jenkins a bit of extra care and attention can greatly enhance your team's experience with CI and make the entire team more productive.
 
 When putting the following configs together I had to wade through a great many sources, so I thought it would be useful to put everything I've learned together in one document. I'm going to walk you through creating a fully instrumented Jenkins setup from scratch for iOS and Mac OS X projects. It will monitor errors, static analyser results, unit tests and code coverage for you, mail you when anything goes wrong, and present the results graphically, like this:
