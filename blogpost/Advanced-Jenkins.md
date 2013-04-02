@@ -363,7 +363,7 @@ Wow. That has been quite a journey.
 
 Now that you've got a running config, play around. Break a unit test, or introduce a static analyzer warning and see Jenkins report it. Drill down into the unit test and coverage reports to get a sense of what's available.
 
-I hope that this article hase been useful and will help you get a lot more out of Jenkins! Comments, questions and errata can be sent to @RichardBuckle on [Twitter](https://twitter.com/RichardBuckle) or [App.net](https://alpha.app.net/richardbuckle).
+I hope that this article has been useful and will help you get a lot more out of Jenkins! Comments, questions and errata can be sent to @RichardBuckle on [Twitter](https://twitter.com/RichardBuckle) or [App.net](https://alpha.app.net/richardbuckle).
 
 Shameless plug: I am available for contract iOS and Mac development. If you are interested in hiring me, please see [http://www.sailmaker.co.uk/]().
 
