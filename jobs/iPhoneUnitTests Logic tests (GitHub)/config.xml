@@ -78,7 +78,7 @@ cd &quot;${WORKSPACE}&quot;
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.warnings.WarningsPublisher plugin="warnings@4.23">
+    <hudson.plugins.warnings.WarningsPublisher plugin="warnings@4.25">
       <healthy></healthy>
       <unHealthy></unHealthy>
       <thresholdLimit>low</thresholdLimit>
@@ -103,7 +103,7 @@ cd &quot;${WORKSPACE}&quot;
       <parserConfigurations/>
       <consoleParsers>
         <hudson.plugins.warnings.ConsoleParser>
-          <parserName>Apple LLVM Compiler (Clang)</parserName>
+          <parserName>Clang (LLVM based)</parserName>
         </hudson.plugins.warnings.ConsoleParser>
       </consoleParsers>
     </hudson.plugins.warnings.WarningsPublisher>
