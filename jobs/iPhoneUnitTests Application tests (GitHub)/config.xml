@@ -76,7 +76,7 @@ rm -rf &quot;${WORKSPACE}&quot;/tmp/objs
 
 # build the test target using our custom intermediates directory
 # and pipe the output to ocunit2junit
-xcodebuild -target iOS_Calc_ApplicationTests -configuration Debug -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES GCC_TREAT_WARNINGS_AS_ERRORS=YES WANT_IOS_SIM=YES OBJROOT=&quot;${WORKSPACE}&quot;/tmp/objs build | /usr/local/bin/ocunit2junit
+xcodebuild -target iOS_Calc_ApplicationTests -configuration Debug -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES GCC_TREAT_WARNINGS_AS_ERRORS=YES WANT_IOS_SIM=YES OBJROOT=&quot;${WORKSPACE}&quot;/tmp/objs clean build | /usr/local/bin/ocunit2junit
 
 # generate the coverage report
 cd &quot;${WORKSPACE}&quot;
