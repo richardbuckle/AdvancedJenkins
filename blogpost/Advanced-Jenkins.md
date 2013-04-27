@@ -91,7 +91,7 @@ Phew, that's over. Next I shall walk you through adding the ancillary stuff that
 I'm going to put these in `usr/local/bin`. If you prefer to put them elsewhere then modify what follows accordingly.
 
 ### OCUnit2JUnit
-This is a very nifty script that converts OCUnit test results into the JUnit format that Jenkins plug-ins can parse and display.
+This is a very nifty Ruby script that converts OCUnit test results into the JUnit format, so that Jenkins plug-ins can parse and display them and add some very helpful drill-down reporting.
 
 Clone [https://github.com/ciryon/OCUnit2JUnit](https://github.com/ciryon/OCUnit2JUnit) and install it in `/usr/local/bin/`:
 
@@ -113,6 +113,8 @@ To use OCUnit2JUnit, pipe the output of any `xcodebuild` command that emits OCUn
 Below I'll describe adding the post-build action "Publish JUnit test result report" to publish the test results.
 
 ### gcovr
+This is a Python script that converts GCC and Clang/LLVM code coverage reports into the Cobertura format, so that Jenkins plug-ins can parse and display them, again adding some very helpful drill-down reporting. 
+
 I am glad to say that [gcovr](https://software.sandia.gov/trac/fast/wiki/gcovr) is no longer a heavyweight install as I previously found. At the time of writing, the latest version is available for immediate download [from SVN](https://software.sandia.gov/svn/public/fast/gcovr) or you can just look at [the home page](https://software.sandia.gov/trac/fast/wiki/gcovr) and pick a download option.
 
 Put it into `/usr/local/bin` as usual. From the download path:
@@ -158,10 +160,10 @@ These are what I use:
 ### Essential plug-ins
 I think everyone will need these, most of which come with the default installation:
 
--   [Token Macro Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Token+Macro+Plugin)
--   [Log Parser Plugin](http://wiki.hudson-ci.org/display/HUDSON/Log+Parser+Plugin)
--   [Jenkins Mailer Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Mailer)
--   [Warnings Plug-in](http://wiki.jenkins-ci.org/x/G4CGAQ)
+-   [Token Macro Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Token+Macro+Plugin) Infrastructure.
+-   [Log Parser Plugin](http://wiki.hudson-ci.org/display/HUDSON/Log+Parser+Plugin) Infrastructure.
+-   [Jenkins Mailer Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Mailer) For mailing the team when the build breaks.
+-   [Warnings Plug-in](http://wiki.jenkins-ci.org/x/G4CGAQ) For parsing warnings emitted by the build, with drill-down.
 
 ### Git-related plug-ins
 Most of these come with the default installation. Might as well have them installed up front and have done with it. Be sure to have `git client plugin` >= 1.0.5 as 1.0.4 had severe issues (promptly fixed).
@@ -175,18 +177,18 @@ Most of these come with the default installation. Might as well have them instal
 -   [Locks and Latches plugin](https://wiki.jenkins-ci.org/display/JENKINS/Locks+and+Latches+plugin) We use this as noted below to serialize builds that invoke `ios-sim`.
 
 ### Social plug-ins
--   [Jenkins Gravatar plugin](http://wiki.jenkins-ci.org/display/JENKINS/Gravatar+Plugin) -- I think it helps accountability if everyone shows their face against each commit.
+-   [Jenkins Gravatar plugin](http://wiki.jenkins-ci.org/display/JENKINS/Gravatar+Plugin) I think it helps accountability if everyone shows their face against each commit.
 
 ### Static analysis plug-ins
--   [Static Analysis Utilities](http://wiki.jenkins-ci.org/x/CwDgAQ)
--   [Clang Scan-Build Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Clang+Scan-Build+Plugin) -- its input side is a bit limited, so I tend to drop to shell script for that and just use it to show the output: see below.
+-   [Static Analysis Utilities](http://wiki.jenkins-ci.org/x/CwDgAQ) For reporting and graphing compiler warnings etc, with drill-down.
+-   [Clang Scan-Build Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Clang+Scan-Build+Plugin) For reporting and graphing static analyzer results, with drill-down. Its input side is a bit limited, so I tend to drop to shell script for that and just use it to show the output: see below.
 
 ### TDD/Code coverage plug-ins
--   [Jenkins Cobertura Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cobertura+Plugin)
+-   [Jenkins Cobertura Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cobertura+Plugin) For reporting and graphing code coverage, with drill-down.
 
 ### Deployment plug-ins
--   [Hockeyapp Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Hockeyapp+Plugin)
--   [Testflight Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Testflight+Plugin)
+-   [Hockeyapp Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Hockeyapp+Plugin) For triggering HockeyApp deployment.
+-   [Testflight Plugin](http://wiki.jenkins-ci.org/display/JENKINS/Testflight+Plugin) For triggering TestFlight deployment.
 
 ### Not recommended
 I wish I could recommend the [XCode integration](https://wiki.jenkins-ci.org/display/JENKINS/Xcode+Plugin) plug-in, but I really can't. It has too many [known issues](https://wiki.jenkins-ci.org/display/JENKINS/Xcode+Plugin#XcodePlugin-Knownissues), particularly that it [misparses quoted parameters containing white space](https://issues.jenkins-ci.org/browse/JENKINS-12800), an issue that has been open for over a year. I've also found that it has trouble parsing log output, often giving spurious fatal errors such as "[FATAL: Log statements out of sync](http://stackoverflow.com/questions/14682694/jenkins-ios-job-broken-because-fatal-log-statements-out-of-sync-current-test)".
@@ -366,5 +368,9 @@ Now that you've got a running config, play around. Break a unit test, or introdu
 I hope that this article has been useful and will help you get a lot more out of Jenkins! Comments, questions and errata can be sent to @RichardBuckle on [Twitter](https://twitter.com/RichardBuckle) or [App.net](https://alpha.app.net/richardbuckle).
 
 Shameless plug: I am available for contract iOS and Mac development. If you are interested in hiring me, please see [http://www.sailmaker.co.uk/](http://www.sailmaker.co.uk/).
+
+#### Updates:
+
+2013-04-27: Added a bit more about why to install each component, from feedback by [@danielctull](https://twitter.com/danielctull).
 
 [Back to Contents](#Contents)
