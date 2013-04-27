@@ -381,4 +381,7 @@ Shameless plug: I am available for contract iOS and Mac development. If you are 
 
 2013-04-27: Added a bit more about why to install each component, from feedback by [@danielctull](https://twitter.com/danielctull).
 
+2013-04-27: Added text about the change in warnings parser 4.24, with [a link to my ticket](https://issues.jenkins-ci.org/browse/JENKINS-17762).
+
+
 [Back to Contents](#Contents)
