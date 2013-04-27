@@ -2,6 +2,12 @@
 <project>
   <actions/>
   <description>iPhoneUnitTests from CLI</description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>50</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@1.3.0">
@@ -70,7 +76,7 @@ rm -rf &quot;${WORKSPACE}&quot;/tmp/objs
 
 # build the test target using our custom intermediates directory
 # and pipe the output to ocunit2junit
-xcodebuild -target iOS_Calc_ApplicationTests -configuration Debug -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES GCC_TREAT_WARNINGS_AS_ERRORS=YES WANT_IOS_SIM=YES OBJROOT=&quot;${WORKSPACE}&quot;/tmp/objs build | /usr/local/bin/ocunit2junit
+xcodebuild -target iOS_Calc_ApplicationTests -configuration Debug -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES GCC_TREAT_WARNINGS_AS_ERRORS=YES WANT_IOS_SIM=YES OBJROOT=&quot;${WORKSPACE}&quot;/tmp/objs clean build | /usr/local/bin/ocunit2junit
 
 # generate the coverage report
 cd &quot;${WORKSPACE}&quot;
@@ -78,7 +84,7 @@ cd &quot;${WORKSPACE}&quot;
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.warnings.WarningsPublisher plugin="warnings@4.23">
+    <hudson.plugins.warnings.WarningsPublisher plugin="warnings@4.25">
       <healthy></healthy>
       <unHealthy></unHealthy>
       <thresholdLimit>low</thresholdLimit>
@@ -103,7 +109,7 @@ cd &quot;${WORKSPACE}&quot;
       <parserConfigurations/>
       <consoleParsers>
         <hudson.plugins.warnings.ConsoleParser>
-          <parserName>Apple LLVM Compiler (Clang)</parserName>
+          <parserName>Clang (LLVM based)</parserName>
         </hudson.plugins.warnings.ConsoleParser>
       </consoleParsers>
     </hudson.plugins.warnings.WarningsPublisher>
