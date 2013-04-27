@@ -275,11 +275,19 @@ Finally we call `gcovr` to generate the coverage report, outputting to `./covera
 
 #### Compiler warnings
 
-Add the "Scan for compiler warnings" post-build step and configure it to use the "Apple LLVM Compiler (Clang) parser like this:
+Add the "Scan for compiler warnings" post-build step and configure it to use the "Clang (LLVM based)" parser like this:
 
 ![Scan for compiler warnings](./images/post-build-compiler-warnings.png)
 
 It shouldn't need any further configuration.
+
+##### Update 2013-04-27: 
+
+My original post said to use the "Apple LLVM Compiler (Clang)" parser. Updates to the Warnings parser [here](https://github.com/jenkinsci/warnings-plugin/commit/702762d7650b15bf2003c7b1be02a7817ec0e800) and [here](https://github.com/jenkinsci/warnings-plugin/commit/3f9f57a88c25a359c42f0dc1b5ab4df4d1874a23) shipping in Warnings parser version 4.24 have silently renamed the "Apple LLVM Compiler (Clang)" parser to "Clang (LLVM based)", silently causing configs using "Apple LLVM Compiler (Clang)" to default to, of all things, "Acu Cobol".
+
+I've filed [this ticket](https://issues.jenkins-ci.org/browse/JENKINS-17762) and encourage you to add a sensible comment if you agree.
+
+Meanwhile, if you created any configs using the Warnings parser <= 4.23, you'll need to update then manually when you update to Warnings parser >= 4.24.
 
 #### Scan-build results
 
