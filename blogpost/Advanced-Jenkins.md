@@ -203,18 +203,18 @@ Next we need to do a bit of system-wide configuration of some of the plug-ins th
 ### Locks
 Find the section called "Locks":
 
-<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinsLocks-default.png" alt="Locks section defaults" title="Locks section defaults" border="0" width="715" height="107" />
+<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinsLocks-default1.png" alt="Locks section defaults" title="Locks section defaults" border="0" width="477" height="107" />
 
 Click "Add" and set the name to, say, "iOS-sim".
 
-<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinsLocks-with-ios-sim.png" alt="Locks section with iOS-sim added" title="Locks section with iOS-sim added" border="0" width="711" height="111" />
+<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinsLocks-with-ios-sim2.png" alt="Locks section with iOS-sim added" title="Locks section with iOS-sim added" border="0" width="377" height="112" />
 
 ### Configuring Clang static analyzer
 Click the button "Clang Static Analyzer installations". 
 
 Click "Add Clang Static Analyzer" and set the name to, say, `Clang-current` and the "Installation directory" to `/usr/local/bin/checker-current`. This is the symlink we created above to avoid having to revise this config when we update scan-build.
 
-<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinsconfigure-clang-analyzer.png" alt="Configuring Clang static analyzer" title="Configuring Clang static analyzer" border="0" width="830" height="164" />
+<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinsconfigure-clang-analyzer3.png" alt="Configuring Clang static analyzer" title="Configuring Clang static analyzer" border="0" width="569" height="167" />
 
 ### Any other business
 You will probably want to fill out the sections titled "Jenkins Location" and "E-mail Notification" here as well. 
@@ -277,7 +277,7 @@ Finally we call `gcovr` to generate the coverage report, outputting to `./covera
 
 Add the "Scan for compiler warnings" post-build step and configure it to use the "Clang (LLVM based)" parser like this:
 
-<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinspost-build-compiler-warnings.png" alt="Scan for compiler warnings" title="Scan for compiler warnings" border="0" width="694" height="318" />
+<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinspost-build-compiler-warnings1.png" alt="Scan for compiler warnings" title="Scan for compiler warnings" border="0" width="574" height="326" />
 
 It shouldn't need any further configuration.
 
@@ -293,7 +293,7 @@ Meanwhile, if you created any configs using the Warnings parser <= 4.23, you'll 
 
 Add the "Publish Clang Scan-Build Results" post-build step:
 
-<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinspost-build-scan-build.png" alt="Publish Clang Scan-Build Results" title="Publish Clang Scan-Build Results" border="0" width="437" height="110" />
+<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinspost-build-scan-build1.png" alt="Publish Clang Scan-Build Results" title="Publish Clang Scan-Build Results" border="0" width="398" height="101" />
 
 Optionally, set a threshold past which the build will be marked as unstable.
 
@@ -301,13 +301,13 @@ Optionally, set a threshold past which the build will be marked as unstable.
 
 Add the "Publish Cobertura Coverage Report" post-build step, giving it the report pattern `coverage.xml`. Optionally, configure the detail to your liking:
 
-<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinspost-build-cobertura.png" alt="Publish Cobertura Coverage Report" title="Publish Cobertura Coverage Report" border="0" width="698" height="710" />
+<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinspost-build-cobertura1.png" alt="Publish Cobertura Coverage Report" title="Publish Cobertura Coverage Report" border="0" width="484" height="600" />
 
 #### Unit test report
 
 Add the "Publish JUnit test result report" post-build step, giving it the XML specifier `test-reports/*.xml`:
 
-<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinspost-build-junit-test.png" alt="Publish JUnit test result report" title="Publish JUnit test result report" border="0" width="699" height="163" />
+<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinspost-build-junit-test1.png" alt="Publish JUnit test result report" title="post-build-junit-test.png" border="0" width="569" height="155" />
 
 #### E-mail Notification
 
@@ -321,7 +321,7 @@ That's it for the Logic tests config. The application tests config differs sligh
 
 In the "Build Environment" step, check "Locks" and select the "iOS-sim" lock:
 
-<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinsLocks-set-on-ios-sim.png" alt="iOS-sim lock" title="iOS-sim lock" border="0" width="656" height="118" />
+<img src="http://www.sailmaker.co.uk/blog/wp-content/uploads/2013/04/AdvancedJenkinsLocks-set-on-ios-sim1.png" alt="iOS-sim lock" title="Locks-set-on-ios-sim.png" border="0" width="438" height="118" />
 
 #### Shell script
 
