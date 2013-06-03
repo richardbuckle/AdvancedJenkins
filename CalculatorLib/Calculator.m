@@ -165,7 +165,7 @@ const NSString *Clear     = @"C";
    }
    if (bad_character) {
         // Raise exception for unexpected character.
-        NSDictionary *errorDict = @{@"arg0": input_character};
+        NSDictionary *errorDict = @{@"arg0": input_character ? input_character : [NSNull null]};
         NSException *exception = [NSException exceptionWithName:NSInvalidArgumentException
                                                          reason:@"The input_character parameter contains an unexpected value."
                                                        userInfo:errorDict];
